@@ -55,8 +55,8 @@ $('#go-button').click(function () {
 
 function fetch_users(language, start_page) {
     github_ajaxes.push(
-        $.getJSON(github_api_endpoint + "/legacy/user/search/language:" + language + "?start_page=" + start_page, function(data) {
-            $.each(data.users, function(i, user){
+        $.getJSON(github_api_endpoint + "/legacy/user/search/language:" + language + "?start_page=" + start_page + "&callback=?", function(data) {
+            $.each(data.data.users, function(i, user){
                 if (user.language == language) {
                     $('.scanned-counter').text(parseInt($('.scanned-counter').text()) + 1);
                     if (user.location != "" && user.location != undefined && user.location != null) {
@@ -64,7 +64,7 @@ function fetch_users(language, start_page) {
                     }
                 }
             });
-            if (data.users.length > 0)
+            if (data.data.users.length > 0)
                 fetch_users(language, start_page + 1);
         })
     )
