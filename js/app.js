@@ -39,6 +39,7 @@ $('.language-selector').click(function() {
 $('#go-button').click(function () {
     $('.map-caption').fadeIn();
     $('.map').vectorMap('set', 'values', {});
+    values = [];
     var language = $('#selected-language').text();
     var start_page = 1;
     $('.scanned-counter').text("0");
