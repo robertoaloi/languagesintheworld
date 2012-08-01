@@ -1,0 +1,239 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Languages In The World</title>
+    <meta name="description" content="">
+    
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+    <link rel="stylesheet" media="screen" href="css/superfish.css" /> 
+    <link rel="stylesheet" href="css/nivo-slider.css" media="all"  /> 
+    <link rel="stylesheet" href="css/tweet.css" media="all"  />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" media="all" href="css/lessframework.css"/>
+
+    <link rel="stylesheet" media="all" href="css/jquery-jvectormap.css"/>
+
+    <!-- All JavaScript at the bottom, except this Modernizr build.
+	 Modernizr enables HTML5 elements & feature detects for optimal performance.
+	 Create your own custom Modernizr build: www.modernizr.com/download/ -->
+    <script src="js/modernizr-2.5.3.min.js"></script>
+  </head>
+  <body>
+
+
+
+    <!-- HEADER -->
+    <header>
+      
+      <!-- header wrapper -->
+      <div class="wrapper cf">
+        <h1>- Languages In The World -</h1>
+
+      </div><!-- ENDS header wrapper -->
+      
+      <!-- nav -->
+      <nav class="cf">
+	<div class="wrapper cf">
+	  <ul id="nav" class="sf-menu">
+	    <li class="current-menu-item "><a class="language-selector" id="Erlang" href="#" data-language="Erlang" data-article="an">Erlang<i><b></b></i></a></li>
+	    <li><a class="language-selector" id="Clojure" href="#">Clojure<i><b></b></i></a></li>
+	    <li><a class="language-selector" id="Go" href="#">Go<i><b></b></i></a></li>
+	    <li><a class="language-selector" id="Haskell" href="#">Haskell<i><b></b></i></a></li>
+	    <li><a class="language-selector" id="Scala" href="#">Scala<i><b></b></i></a></li>
+	  </ul>
+	  <div id="combo-holder"></div>
+	</div>
+      </nav>
+      <!-- ends nav -->
+      
+    </header>
+    <!-- ENDS HEADER -->
+    
+    <!-- MAIN -->
+    <div role="main" id="main">
+      <div class="wrapper">
+	
+	<!-- SLIDER -->
+	<div class="slider-wrapper theme-default theme-project theme-home">
+          <div class="ribbon"></div>
+          <div class="nivoSlider">
+            <div class="map" style="width: 1000px; height: 400px"></div>
+            <div class="map-caption">
+              <span class="scanned-counter">0</span> users scanned.
+              <span class="located-counter">0</span> users located.
+              <span class="countries-counter">0</span> Countries found.
+            </div>
+          </div>
+        </div>
+	<!-- ENDS SLIDER -->
+
+        <a href="#" class="link-button fullwidth" id="go-button">
+          Show me <span id="selected-article">an</span> <span id="selected-language">Erlang</span> World
+        </a>		
+	
+	<!-- Feature -->
+	<ul id="filter-container-feature" class="feature">
+
+	</ul>
+	<!-- ENDS feature -->
+	
+      </div>
+    </div>
+    <!-- ENDS MAIN -->
+    
+    
+    <footer>
+      
+      <!-- wrapper -->
+      <div class="wrapper cf">
+	
+	
+	<!-- social -->
+	<div class="sb-holder cf">
+	  <ul id="social-bar" class="cf">
+	    <li class="left-corner"><i></i></li>
+            <li><a href="https://twitter.com/share" class="twitter-share-button" data-text="Languages in the World. Real Time Infographics about your favourite programming language." data-via="robertoaloi" data-size="large">Tweet</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></li>
+	    
+	    <li class="right-corner"><i></i></li>
+	  </ul>
+	  
+	  
+	</div>
+	<!-- ENDS social -->
+	
+	
+	<!-- widgets -->
+        <ul  class="widget-cols cf">
+          <li class="first-col">
+            
+            <div class="widget-block">
+              <h4>How it Works</h4>
+              <p class="dropcap dark">We lookup on GitHub for users who
+                primarily code in the language of your choice, using the
+                <a href="http://developer.github.com/v3/"
+                   target="_blank">GitHub API</a>. Then, we
+                <a href="http://en.wikipedia.org/wiki/Geocoding" target="_blank">
+                  geocode</a> those locations using the
+                <a
+                   href="http://developer.yahoo.com/geo/placefinder/"
+                   target="_blank">Yahoo! PlaceFinder
+                  API</a>. Finally, we use <a
+                                              href="http://jvectormap.com/"
+                                              target="_blank">jVectorMap</a> to
+                visualize the collected data.</p>
+            </div>
+          </li>
+
+          <li class="second-col">
+            
+            <div class="widget-block">
+              <h4>Be responsible</h4>
+              <p class="dropcap dark">The Yahoo! PlaceFinder API web service has a
+                daily cap of 50,000 requests per IP. Since
+                Yahoo! doesn't seem to provide a service for bulk
+                geocoding at the moment and we are not
+                caching geocoding requests (yet!) please use this service
+                responsibly, to avoid being banned from
+                Yahoo!'s web services. You've been warned.
+              </p>
+            </div>
+          </li>
+
+          <li class="second-col">
+            
+            <div class="widget-block">
+              <h4>Contribute</h4>
+              <p class="dropcap dark">The project is completely open
+                source and waiting for you on <a href="http://github.com/prof3ta/languagesintheworld" target="_blank">GitHub</a>. Feel free
+                to fork it, improve it and send us your
+                pull requests. Raise issues if something
+                is not working for you or if you have a
+                feature request. We'll be glad to help,
+                whenever we can.</p>
+            </div>
+          </li>
+
+          <li class="fourth-col">
+            
+            <div class="widget-block">
+              <h4>About the Author</h4>
+              <div class="recent-post cf">
+                <a href="#" class="thumb author"><img
+                                                    src="img/author.png" alt="Roberto Aloi" /></a>
+                <p>Roberto Aloi is a
+                  Software Engineer and Erlanger from
+                  <a
+                     href="http://en.wikipedia.org/wiki/Sicily"
+                     target="_blank">Sicily</a>. He's also the author of <a
+                                                                            href="http://www.tryerlang.org" target="_blank">tryerlang.org</a>.
+                  Photography and food lover, he passes most
+                  of his day converting coffee beans into
+                  code. Follow him on <a
+                                         href="http://www.twitter.com/#!/robertoaloi"
+                                         target="_blank">Twitter</a>.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+	<!-- ENDS widgets -->
+	
+	
+	<div id="footer-bottom">
+          Website brought to you by <a href="http://www.twitter.com/#!/robertoaloi" target="_blank">@robertoaloi</a><br />
+          Vintage Template designed by <a href="http://www.luiszuno.com" target="_blank">luiszuno.com</a>
+        </div>
+	
+	
+      </div><!-- ENDS wrapper -->
+      
+      
+      
+
+    </footer>
+
+
+    <!-- JavaScript at the bottom for fast page loading -->
+    
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
+      
+      <!-- scripts concatenated and minified via build script -->
+      <script src="js/custom.js"></script>
+      
+      <!-- superfish -->
+      <script  src="js/superfish-1.4.8/js/hoverIntent.js"></script>
+      <script  src="js/superfish-1.4.8/js/superfish.js"></script>
+      <script  src="js/superfish-1.4.8/js/supersubs.js"></script>
+      <!-- ENDS superfish -->
+      
+      <script src="js/tweet/jquery.tweet.js" ></script>
+      <script src="js/jquery.isotope.min.js"></script>
+      <script src="js/jquery.nivo.slider.js" ></script>
+      <script src="js/css3-mediaqueries.js"></script>
+      <script src="js/tabs.js"></script>
+      <script
+	 src="js/poshytip-1.1/src/jquery.poshytip.min.js"></script>
+      
+      <!-- jvectormap -->
+      <script src="js/jquery-jvectormap.js"></script>
+      <script src="js/jquery-jvectormap-world-en.js"></script>
+      <script src="js/app.js"></script>
+      <!-- ENDS jvectormap -->
+      <script>
+      </script>
+      <!-- end scripts -->
+
+  </body>
+</html>
