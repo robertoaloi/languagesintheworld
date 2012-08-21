@@ -155,23 +155,3 @@ function rank(obj, max) {
     return tuples.slice(0, max);
 }
 
-// $('#go-button').click(function () {
-//     $('.map-caption').fadeIn();
-//     $('.map').vectorMap('set', 'values', {});
-//     var language = $('#language-selector').val();
-//     $.getJSON(github_api_endpoint +
-//     "/legacy/repos/search/"+language+"?language="+language, function(repos) {
-//         var ajaxes = [];
-//         $.each(repos.repositories, function(i, repo){
-//             $.getJSON(github_api_endpoint + "/repos/" + repo.owner + "/" + repo.name + "/contributors", function(contributors) {
-//                 $.each(contributors, function(i, contributor){
-//                     $.getJSON(github_api_endpoint + "/users/" + contributor.login, function(contributor, status, xhr) {
-//                         $('.scanned-counter').text(parseInt($('.scanned-counter').text()) + 1);
-//                         $('.current-user').text(contributor.login);
-//                         location_to_country_code(contributor.location);
-//                     });
-//                 });
-//             });
-//         });
-//     });
-// });
