@@ -685,51 +685,29 @@ footer #footer-bottom {
 
 .map-caption{
     display: none;
-    padding-top: 10px;
+    padding: 10px 0;
     bottom: 0;
 }
 
 .stats-block{
-    margin-top: 30px;
     display: none;
-    max-width: 160px;
-    width: 160px;
-    text-align: center;
-}
-
-.stats-block-left{
+    width: 45%;
     float: left;
-    margin-left: 40px;
+    text-align: center;
+    padding: 20px;
 }
 
-.stats-block-right{
-    float: right;
-    margin-right: 40px;
-}
-
-.stats-block .heading{
-   border-top: 5px solid #444444;
-  border-bottom: 5px solid #444444;
-  margin-bottom: 15px;
-  padding-top: 15px;
-  padding-bottom: 10px;
-  line-height: 1.1em;
-  text-align: center;
-  min-width: 160px;
+.stats-block h2{
+  border-bottom: 5px solid;
+  margin-bottom: 5px;
 }
 
 .stats-block li{
-  display: block;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: 5px;
-  margin-bottom: 5px;
-  padding-left: 10px;
+  position: relative;
+  font-family: mensch;
+  word-spacing: -0.1em;
 }
 
 .stats-block li a{
     color: rgb(203, 84, 50);
-}
-
-.tiny{
-    font-size: 0.7em;
 }
