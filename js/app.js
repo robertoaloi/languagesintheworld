@@ -1,6 +1,7 @@
 var github_api_endpoint = "https://api.github.com";
 var geocoding_api_endpoint = "http://nominatim.openstreetmap.org";
 
+var cache = {};
 var values = [];
 var countries = [];
 var devs = {};
@@ -66,7 +67,11 @@ function fetch_users(language, start_page) {
                 if (user.language == language) {
                     $('.scanned-counter').text(parseInt($('.scanned-counter').text()) + 1);
                     if (user.location != "" && user.location != undefined && user.location != null) {
-                        location_to_country_code(user.location, user.username, user.followers, user.fullname);
+                        if (cache[user.location] != undefined) {
+                            handle_entry(cache[user.location][0], cache[user.location][1], user.username, user.followers, user.fullname);
+                        } else {
+                            location_to_country_code(user.location, user.username, user.followers, user.fullname);
+                        }
                     }
                 }
             });
@@ -76,6 +81,31 @@ function fetch_users(language, start_page) {
     )
 }
 
+function handle_entry(c, cc, username, followers, fullname) {
+    if (values[cc] == undefined) {
+        values[cc] = 1;
+        countries[cc] = c;
+        $('.countries-counter').text(parseInt($('.countries-counter').text()) + 1);
+    } else {
+        values[cc] += 1;
+    }
+    if (devs[cc] == undefined)
+        devs[cc] = new Array();
+    devs[cc][username] = followers;
+    if (fullname != null)
+        fullnames[username] = fullname;
+    else
+        fullnames[username] = username;
+    $('.map').vectorMap('set', 'values', values);
+    var top_countries = rank(values, 10);
+    $('.countries-league').empty();
+    $.each(top_countries, function(i,e){
+        $('.countries-league').append(
+            '<li>' + countries[e[0]] + ' (' + values[e[0]] + ')</li>'
+        );
+    });
+}
+
 function location_to_country_code(location, username, followers, fullname) {
     geocoding_ajaxes.push(
         $.getJSON(geocoding_api_endpoint + "/search?q="+location+"&format=json&addressdetails=1", function (data) {
@@ -83,28 +113,8 @@ function location_to_country_code(location, username, followers, fullname) {
             if (! $.isEmptyObject(data)) {
                 var c = data[0].address.country;
                 var cc = data[0].address.country_code;
-                if (values[cc] == undefined) {
-                    values[cc] = 1;
-                    countries[cc] = c;
-                    $('.countries-counter').text(parseInt($('.countries-counter').text()) + 1);
-                } else {
-                    values[cc] += 1;
-                }
-                if (devs[cc] == undefined)
-                    devs[cc] = new Array();
-                devs[cc][username] = followers;
-                if (fullname != null)
-                    fullnames[username] = fullname;
-                else
-                    fullnames[username] = username;
-                $('.map').vectorMap('set', 'values', values);
-                var top_countries = rank(values, 10);
-                $('.countries-league').empty();
-                $.each(top_countries, function(i,e){
-                    $('.countries-league').append(
-                        '<li>' + countries[e[0]] + ' (' + values[e[0]] + ')</li>'
-                    );
-                })
+                cache[location] = [c, cc];
+                handle_entry(c, cc, username, followers, fullname);
             }
         })
     )
