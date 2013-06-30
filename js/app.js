@@ -112,7 +112,7 @@ function location_to_country_code(location, username, followers, fullname) {
             $('.located-counter').text(parseInt($('.located-counter').text()) + 1);
             if (! $.isEmptyObject(data)) {
                 var c = data[0].address.country;
-                var cc = data[0].address.country_code;
+                var cc = data[0].address.country_code.toUpperCase();
                 cache[location] = [c, cc];
                 handle_entry(c, cc, username, followers, fullname);
             }
