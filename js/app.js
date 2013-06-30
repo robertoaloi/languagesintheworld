@@ -1,13 +1,12 @@
 var github_api_endpoint = "https://api.github.com";
-var yahoo_api_endpoint = "http://where.yahooapis.com";
-var yahoo_api_key = "dj0yJmk9WFVaNmE5MTF4Y2lyJmQ9WVdrOVpHUXlPVVJ1Tm5FbWNHbzlNVGsyTkRrek16azJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD1lMA--"
+var geocoding_api_endpoint = "http://nominatim.openstreetmap.org";
 
 var values = [];
 var countries = [];
 var devs = {};
 var fullnames = {};
 var github_ajaxes = [];
-var yahoo_ajaxes = [];
+var geocoding_ajaxes = [];
 
 // TODO: Dropdown with GitHub languages
 // TODO: Caching
@@ -54,7 +53,7 @@ $('#go-button').click(function () {
     $.each(github_ajaxes, function(i, handle) {
         handle.abort();
     });
-    $.each(yahoo_ajaxes, function(i, handle) {
+    $.each(geocoding_ajaxes, function(i, handle) {
         handle.abort();
     });
     fetch_users(language, start_page);
@@ -78,12 +77,12 @@ function fetch_users(language, start_page) {
 }
 
 function location_to_country_code(location, username, followers, fullname) {
-    yahoo_ajaxes.push(
-        $.getJSON(yahoo_api_endpoint + "/geocode?q="+location+"&flags=J&appid=" + yahoo_api_key, function (data) {
+    geocoding_ajaxes.push(
+        $.getJSON(geocoding_api_endpoint + "/search?q="+location+"&format=json&addressdetails=1", function (data) {
             $('.located-counter').text(parseInt($('.located-counter').text()) + 1);
-            if (! $.isEmptyObject(data.ResultSet.Results)) {
-                var c = data.ResultSet.Results[0].country;
-                var cc = data.ResultSet.Results[0].countrycode;
+            if (! $.isEmptyObject(data)) {
+                var c = data[0].address.country;
+                var cc = data[0].address.country_code;
                 if (values[cc] == undefined) {
                     values[cc] = 1;
                     countries[cc] = c;
